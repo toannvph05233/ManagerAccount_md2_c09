@@ -1,5 +1,6 @@
 package manager;
 
+import io.BookIO;
 import model.Book;
 
 import java.util.ArrayList;
@@ -9,12 +10,17 @@ public class ManagerBook {
     ArrayList<Book> books = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
 
+    public ManagerBook() {
+        BookIO.readBook(books);
+    }
+
     public void addBook(Book book) {
         books.add(book);
+        BookIO.writeBook(books);
     }
 
     public void display() {
-        for (Book b:books) {
+        for (Book b : books) {
             System.out.println(b);
         }
     }
@@ -22,10 +28,12 @@ public class ManagerBook {
     public void editBook(int index, Book book) {
         book.setId(books.get(index).getId());
         books.set(index, book);
+        BookIO.writeBook(books);
     }
 
     public void deleteBook(int index) {
         books.remove(index);
+        BookIO.writeBook(books);
     }
 
     public Book create() {
@@ -34,7 +42,13 @@ public class ManagerBook {
         String category = scanner.nextLine();
         System.out.println("nhập tác giả");
         String author = scanner.nextLine();
-        return new Book(name, category, author);
+        int idEnd = 0;
+        try {
+            idEnd = books.get(books.size() - 1).getId();
+        } catch (Exception e) {
+
+        }
+        return new Book(idEnd + 1, name, category, author);
     }
 
     public String validateName() {

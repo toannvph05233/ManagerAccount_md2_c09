@@ -1,17 +1,16 @@
 package model;
 
 public class Book {
-    private static int idStatic =1;
     private int id;
     private String name;
     private String category;
     private String author;
 
     public Book() {
-        this.id = idStatic++;
     }
-    public Book( String name, String category, String author) {
-        this.id = idStatic++;
+
+    public Book(int id, String name, String category, String author) {
+        this.id = id;
         this.name = name;
         this.category = category;
         this.author = author;

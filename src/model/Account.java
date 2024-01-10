@@ -2,17 +2,12 @@ package model;
 
 public class Account {
     private int id;
-    private static int idStatic = 1;
     private String username;
     private String password;
     private Role role;
 
-    public Account() {
-        this.id = idStatic++;
-    }
-
-    public Account(String username, String password, Role role) {
-        this.id = idStatic++;
+    public Account(int id, String username, String password, Role role) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.role = role;

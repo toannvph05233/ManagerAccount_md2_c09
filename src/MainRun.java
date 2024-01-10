@@ -16,7 +16,7 @@ public class MainRun {
             System.out.println("Xin chào");
             System.out.println("1. Login");
             System.out.println("2. Register");
-            int choice = Integer.parseInt(scanner.nextLine());
+            int choice = choice();
             switch (choice) {
                 case 1:
                     login();
@@ -27,6 +27,16 @@ public class MainRun {
                     break;
                 default:
                     System.err.println("Nhập sai");
+            }
+        }
+    }
+
+    public static int choice(){
+        while (true){
+            try {
+               return Integer.parseInt(scanner.nextLine());
+            } catch (Exception e) {
+                System.err.println("Mù ag nhập số");
             }
         }
     }
@@ -55,7 +65,7 @@ public class MainRun {
             System.out.println("1. Hiển thi sách");
             System.out.println("2. Tìm kiếm sách theo tên");
             System.out.println("3. logout");
-            int choice = Integer.parseInt(scanner.nextLine());
+            int choice = choice();
             switch (choice) {
                 case 1:
                     managerBook.display();
@@ -85,7 +95,7 @@ public class MainRun {
             System.out.println("4. Sửa sách");
             System.out.println("5. Tìm kiếm sách theo tên");
             System.out.println("6. logout");
-            int choice = Integer.parseInt(scanner.nextLine());
+            int choice = choice();
             switch (choice) {
                 case 1:
                     managerBook.display();
